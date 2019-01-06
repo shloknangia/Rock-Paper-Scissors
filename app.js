@@ -25,22 +25,31 @@ function convertToWord(letter){
 
 function win(user, comp){
 	console.log("USER WINS");
+	const userChoiceDiv = document.getElementById(user).classList;
 	userScores++;
 	userScore_span.innerHTML = userScores;
 	result_div.innerHTML = `${convertToWord(user)}${smallUserWord} beats ${convertToWord(comp)}${smallCompWord}. You
-	 Win!!`
+	 Win!!`;
+	userChoiceDiv.add('green-glow');
+	setTimeout(() => userChoiceDiv.remove('green-glow'), 300)
 }
 
 function lose(user, comp){
 	console.log("USER LOSES");
+	const userChoiceDiv = document.getElementById(user).classList;
 	compScores++;
 	compScore_span.innerHTML = compScores;
-	result_div.innerHTML = `${convertToWord(user)}${smallUserWord} looses to ${convertToWord(comp)}${smallCompWord}. You lose!!`
+	result_div.innerHTML = `${convertToWord(user)}${smallUserWord} looses to ${convertToWord(comp)}${smallCompWord}. You lose!!`;
+	userChoiceDiv.add('red-glow');
+	setTimeout(() => userChoiceDiv.remove('red-glow'), 300)
 }
 
 function draw(user, comp){
-	console.log("DRAW");
-	result_div.innerHTML = `${convertToWord(user)}${smallUserWord} and ${convertToWord(comp)}${smallCompWord} are same. Its A Draw!!`
+	console.log("DRAW");	
+	const userChoiceDiv = document.getElementById(user).classList;
+	result_div.innerHTML = `${convertToWord(user)}${smallUserWord} and ${convertToWord(comp)}${smallCompWord} are same. Its A Draw!!`;
+	userChoiceDiv.add('gray-glow');
+	setTimeout(() => userChoiceDiv.remove('gray-glow'), 300)
 }
 
 function game(userChoice){
@@ -69,16 +78,16 @@ function game(userChoice){
 
 
 function main(){
-	rock_div.addEventListener('click', function() {
+	rock_div.addEventListener('click', () => {
 		console.log("rock clicked");
 		game("r");
 	})
 
-	paper_div.addEventListener('click', function() {
+	paper_div.addEventListener('click', () => {
 		console.log("paper clicked");
 		game("p");
 	})
-	scissor_div.addEventListener('click', function() {
+	scissor_div.addEventListener('click', () => {
 		console.log("scissor clicked");
 		game("s");
 	})
